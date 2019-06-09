@@ -20,15 +20,18 @@ public class SearchResource {
         this.searchService = searchService;
     }
 
-    @PostMapping("/insertWord")
+    @PostMapping(path = "/insertWord")
     @ResponseStatus(HttpStatus.OK)
-    public void insertWord(String word) {
+    public ResponseEntity<ResponseVM> insertWord(@RequestBody String word) {
+        System.out.println("word..." + word);
         searchService.insertNewWord(word);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/getWords/{prefix}")
     public ResponseEntity<ResponseVM> getWordsByPrefix(@PathVariable String prefix) {
         ResponseVM response = new ResponseVM();
+        response.setData(searchService.getWordsByPrefix(prefix).toString());
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
