@@ -1,3 +1,10 @@
+/*
+ * Copyright  : ZakCorp (c) Zakir Hussain
+ * License    : MIT
+ * Maintainer : zakirhussainb2693@gmail.com
+ * Stability  : stable
+ */
+
 package com.zakcorp.typeahead.service;
 
 import com.zakcorp.typeahead.domain.TrieNode;
@@ -17,7 +24,6 @@ public class SearchService {
     }
 
     public void insertNewWord(String word) {
-        System.out.println("word..." + word);
         char[] cArr = word.toCharArray();
         TrieNode node = root;
         TrieNode tn = null;
