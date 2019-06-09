@@ -1,6 +1,8 @@
 package com.zakcorp.typeahead.web.rest;
 
+import com.zakcorp.typeahead.service.SearchService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,10 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class SearchResource {
 
+    private final SearchService searchService;
+
+    @Autowired
+    public SearchResource(SearchService searchService) {
+        this.searchService = searchService;
+    }
+
     @PostMapping("/insertWord")
     @ResponseStatus(HttpStatus.OK)
-    public String insertWord(String word) {
-        return null;
+    public void insertWord(String word) {
+        searchService.insertNewWord(word);
     }
 
 
