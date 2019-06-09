@@ -77,4 +77,8 @@ public class SearchService {
         }
         return words;
     }
+
+    public void bulkUploadWords(List<String> wordList) {
+
+    }
 }

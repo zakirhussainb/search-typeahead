@@ -44,7 +44,8 @@ public class SearchResource {
     }
 
     @PostMapping(path = "/bulkUploadWords")
-    public ResponseEntity<ResponseVM> bulkUploadWords(@RequestBody List<String> words) {
+    public ResponseEntity<ResponseVM> bulkUploadWords(@RequestBody List<String> wordList) {
+        searchService.bulkUploadWords(wordList);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
