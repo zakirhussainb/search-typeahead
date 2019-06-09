@@ -6,13 +6,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TypeaheadApplication implements CommandLineRunner {
+public class TypeaheadApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TypeaheadApplication.class, args);
 	}
 
-	@Override
+	/*@Override
 	public void run(String... args) throws Exception {
 		SearchService service = new SearchService();
 		service.insertNewWord("AJMER");
@@ -26,5 +26,5 @@ public class TypeaheadApplication implements CommandLineRunner {
 		service.insertNewWord("GAYA");
 		service.insertNewWord("GURGAON");
 		service.insertNewWord("GUNTUR");
-	}
+	}*/
 }

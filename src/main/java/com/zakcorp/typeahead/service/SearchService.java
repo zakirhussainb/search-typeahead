@@ -17,6 +17,7 @@ public class SearchService {
     }
 
     public void insertNewWord(String word) {
+        System.out.println("word..." + word);
         char[] cArr = word.toCharArray();
         TrieNode node = root;
         TrieNode tn = null;
@@ -39,5 +40,35 @@ public class SearchService {
         }
         node.isLast = true;
         node.word = word;
+    }
+
+    public List<String> getWordsByPrefix(String word) {
+        char[] cArr = word.toCharArray();
+        TrieNode node = root;
+        TrieNode tn = null;
+        int index = 0;
+        do {
+            tn = node.child[cArr[index] - 'A'];
+            if(tn == null) {
+                return null;
+            }
+            index++;
+            node = tn;
+        }while (index < cArr.length);
+        List<String> words = new ArrayList<>();
+        Deque<TrieNode> DQ = new ArrayDeque<>();
+        DQ.addLast(node);
+        while (!DQ.isEmpty()) {
+            TrieNode first = DQ.removeFirst();
+            if(first.isLast) {
+                words.add(first.word);
+            }
+            for(TrieNode n : first.child) {
+                if(n != null) {
+                    DQ.add(n);
+                }
+            }
+        }
+        return words;
     }
 }
